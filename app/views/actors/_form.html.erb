@@ -1,0 +1,22 @@
+<%= form_for [@project, @actor] do |f| %>
+<ul>
+  <li>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  </li>
+  <li>
+  <%= f.label :slug %>
+  <%= f.text_field :slug %>
+  </li>
+  <li>
+  <%= f.label :actor %>
+  <%= f.text_field :actor %>
+  </li>
+  <li>
+  <%= f.label :subtitle_color %>
+  <%= f.text_field :subtitle_color %>
+  </li>
+</ul>
+<%= f.submit "Submit" %>
+<%= link_to 'Cancel', project_actors_path(@project) %>
+<% end %>

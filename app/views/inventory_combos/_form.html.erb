@@ -1,0 +1,22 @@
+<%= form_for [@project, @combo] do |f| %>
+<ul>
+  <li>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  </li>
+  <li>
+  <%= f.label :slug %>
+  <%= f.text_field :slug %>
+  </li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<%= f.collection_check_boxes :inventory_item_ids, InventoryItem.all, :id, :slug do |b| %>
+  <li><%= b.check_box %> <%= b.label %></li>
+<% end %>
+</ul>
+
+<%= f.submit 'Submit', id: 'submit' %>
+<%= link_to 'Cancel', project_inventory_combos_path(@project) %>
+<% end %>

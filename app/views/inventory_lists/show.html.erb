@@ -1,0 +1,14 @@
+<h1>Inventory List: <%= @list.slug %></h1>
+
+<ul>
+  <li><%= @list.slug %></li>
+</ul>
+
+<h2>Items</h2>
+<ul>
+  <% @list.inventory_items.each do |item| %>
+    <li><%= content_tag :b, item.slug %></li>
+  <% end %>
+</ul>
+
+<p><%= link_to 'Edit', edit_project_inventory_list_path(@project, @list) %>

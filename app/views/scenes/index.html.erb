@@ -1,0 +1,13 @@
+<h1>Scenes</h1>
+
+<ul>
+<% @project.scenes.each do |scene| %>
+  <li>
+    <%= link_to scene.name, project_scene_path(@project, scene) %>
+    <%= link_to 'Edit', edit_project_scene_path(@project, scene) %>
+    <%= link_to 'Delete', project_scene_path(@project, scene), method: 'delete' %>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to 'Add a scene', new_project_scene_path(@project) %>

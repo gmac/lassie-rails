@@ -1,0 +1,13 @@
+<h1>Inventory Combos</h1>
+
+<ul>
+  <% @project.inventory_combos.each do |combo| %>
+    <li>
+      <%= link_to combo.name, project_inventory_combo_path(@project, combo) %>
+      <%= link_to 'Edit', edit_project_inventory_combo_path(@project, combo) %>
+      <%= link_to 'Delete', project_inventory_combo_path(@project, combo), method: 'delete' %>
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to 'Add an inventory combo', new_project_inventory_combo_path(@project) %></p>

@@ -1,0 +1,14 @@
+<%= form_for @project do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <h2>Collaborators</h2>
+  <ul>
+  <%= f.collection_check_boxes :user_ids, User.all, :id, :name do |b| %>
+    <li><%= b.check_box %> <%= b.label %></li>
+  <% end %>
+  </ul>
+
+  <%= f.submit "Submit" %>
+  <%= link_to 'Cancel', cancel_path %>
+<% end %>

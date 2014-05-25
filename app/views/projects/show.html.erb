@@ -1,0 +1,9 @@
+<h1><%= @project.name %></h1>
+<h2>Collaborators</h2>
+<ul>
+  <% @project.users.each do |user| %>
+    <li><%= content_tag :b, user.name %> (<%= user.email %>)</li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_project_path(@project) %>

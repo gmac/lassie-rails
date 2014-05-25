@@ -1,0 +1,9 @@
+<h1><%= @combo.name %></h1>
+
+<ul>
+  <% @combo.inventory_items.each do |item| %>
+  <li><%= link_to item.slug, project_inventory_item_path(@project, item) %>
+  <% end %>
+</ul>
+
+<p><%= link_to 'Edit', edit_project_inventory_combo_path(@project, @combo) %></p>

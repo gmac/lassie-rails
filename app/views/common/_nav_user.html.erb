@@ -1,0 +1,8 @@
+<ul>
+  <li><%= link_to current_user.name, current_user %></li>
+  <li>
+    <%= form_tag(logout_path, method: 'delete') do %>
+      <%= submit_tag('Logout') %>
+    <% end %>
+  </li>
+</ul>

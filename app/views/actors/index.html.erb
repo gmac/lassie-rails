@@ -1,0 +1,13 @@
+<h1>Actors</h1>
+
+<ul>
+  <% @project.actors.each do |actor| %>
+  <li>
+    <%= link_to actor.name, project_actor_path(@project, actor) %>
+    <%= link_to 'Edit', edit_project_actor_path(@project, actor) %>
+    <%= link_to 'Delete', project_actor_path(@project, actor), method: 'delete' %>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Add another actor', new_project_actor_path(@project) %>

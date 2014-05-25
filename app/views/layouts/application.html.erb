@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Lassie</title>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% if content_for?(:navbar) %>
+  <ul class="navbar">
+    <%= yield(:navbar) %>
+  </ul>
+  <% end %>
+  <div class="main">
+    <%= yield %>
+  </div>
+</body>
+</html>

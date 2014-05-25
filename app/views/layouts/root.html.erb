@@ -1,0 +1,5 @@
+<% content_for :navbar do %>
+  <%= navbar_item('projects') { link_to 'Projects', projects_path } %>
+  <%= navbar_item('users') { link_to 'Users', users_path } %>
+<% end %>
+<%= render template: "layouts/application" %>

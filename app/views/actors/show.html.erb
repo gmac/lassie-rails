@@ -1,0 +1,14 @@
+<h1><%= @actor.name %></h1>
+
+<ul>
+  <dt>Name</dt>
+  <dd><%= @actor.name %></dd>
+  <dt>Slug</dt>
+  <dd><%= @actor.slug %></dd>
+  <dt>Actor</dt>
+  <dd><%= @actor.actor %></dd>
+  <dt>Subtitle Color</dt>
+  <dd><%= @actor.subtitle_color %></dd>
+</ul>
+
+<%= link_to "Edit", edit_project_actor_path(@project, @actor) %>

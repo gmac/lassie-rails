@@ -1,0 +1,12 @@
+<h1>Inventory Items</h1>
+<ul>
+  <% @project.inventory_items.each do |item| %>
+    <li>
+      <%= link_to item.name, project_inventory_item_path(@project, item) %>
+      <%= link_to 'Edit', edit_project_inventory_item_path(@project, item) %>
+      <%= link_to 'Delete', project_inventory_item_path(@project, item), method: 'delete' %>
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to 'Add an inventory item', new_project_inventory_item_path(@project) %></p>

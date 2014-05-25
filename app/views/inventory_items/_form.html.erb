@@ -1,0 +1,14 @@
+<%= form_for [@project, @item] do |f| %>
+<ul>
+  <li>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  </li>
+  <li>
+  <%= f.label :slug %>
+  <%= f.text_field :slug %>
+  </li>
+</ul>
+<%= f.submit 'Submit', id: 'submit' %>
+<%= link_to 'Cancel', project_inventory_items_path(@project) %>
+<% end %>

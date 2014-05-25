@@ -1,0 +1,14 @@
+<% content_for :navbar do %>
+  <li class="back"><%= link_to 'Projects', projects_path %></li>
+  <%= navbar_item('actors') { link_to 'Actors', project_actors_path(@project) } %>
+  <li>
+    <%= link_to 'Inventory', '#' %>
+    <ul>
+      <%= navbar_item('inventory_lists') { link_to 'Lists', project_inventory_lists_path(@project) } %>
+      <%= navbar_item('inventory_items') { link_to 'Items', project_inventory_items_path(@project) } %>
+      <%= navbar_item('inventory_combos') { link_to 'Combos', project_inventory_combos_path(@project) } %>
+    </ul>
+  </li>
+  <%= navbar_item('scenes') { link_to 'Scenes', project_scenes_path(@project) } %>
+<% end %>
+<%= render template: "layouts/application" %>

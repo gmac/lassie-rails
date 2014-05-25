@@ -1,0 +1,8 @@
+<% content_for :navbar do %>
+  <li class="back"><%= link_to 'Scenes', project_scenes_path(@project) %></li>
+  <li><a href="#layers">Layers</a></li>
+  <li><a href="#grids">Grids</a></li>
+  <li><a href="#matricies">Matricies</a></li>
+<% end %>
+
+<%= render template: "layouts/application" %>
