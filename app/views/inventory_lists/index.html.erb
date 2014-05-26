@@ -1,4 +1,10 @@
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Inventory', project_inventory_path(@project) %></li>
+  <li>Lists</li>
+<% end %>
+
 <h1>Inventory Lists</h1>
+
 <ul>
   <% @project.inventory_lists.each do |list| %>
     <li>

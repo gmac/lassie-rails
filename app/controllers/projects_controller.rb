@@ -31,6 +31,10 @@ class ProjectsController < ApplicationController
     redirect_to @project
   end
 
+  def inventory
+    @project = find_parent_project
+  end
+
   private
 
   def select_layout

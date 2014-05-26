@@ -1,2 +1,8 @@
-<h1>New Inventory Combo</h1>
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Inventory', project_inventory_path(@project) %></li>
+  <li><%= link_to 'Combos', project_inventory_combos_path(@project) %></li>
+  <li>New Combo</li>
+<% end %>
+
+<h1>New Combo</h1>
 <%= render partial: 'form' %>

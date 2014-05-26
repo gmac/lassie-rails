@@ -2,11 +2,11 @@
   <li class="back"><%= link_to 'Projects', projects_path %></li>
   <%= navbar_item('actors') { link_to 'Actors', project_actors_path(@project) } %>
   <li>
-    <%= link_to 'Inventory', '#' %>
+    <%= link_to 'Inventory', project_inventory_path(@project), class: navbar_active_list(%(inventory inventory_lists inventory_items inventory_combos)) %>
     <ul>
-      <%= navbar_item('inventory_lists') { link_to 'Lists', project_inventory_lists_path(@project) } %>
-      <%= navbar_item('inventory_items') { link_to 'Items', project_inventory_items_path(@project) } %>
-      <%= navbar_item('inventory_combos') { link_to 'Combos', project_inventory_combos_path(@project) } %>
+      <li><%= link_to 'Lists', project_inventory_lists_path(@project), class: navbar_active('inventory_lists') %></li>
+      <li><%= link_to 'Items', project_inventory_items_path(@project), class: navbar_active('inventory_items') %></li>
+      <li><%= link_to 'Combos', project_inventory_combos_path(@project), class: navbar_active('inventory_combos') %></li>
     </ul>
   </li>
   <%= navbar_item('scenes') { link_to 'Scenes', project_scenes_path(@project) } %>

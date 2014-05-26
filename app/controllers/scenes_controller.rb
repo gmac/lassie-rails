@@ -2,7 +2,7 @@ class ScenesController < ApplicationController
   layout 'project'
 
   before_action :require_signin
-  before_action :find_project
+  before_action :find_parent_project
   before_action :find_scene, only: [:show, :edit, :update, :destroy]
 
   def index

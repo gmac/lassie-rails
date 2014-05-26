@@ -1,2 +1,7 @@
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Authors', @user %></li>
+  <li>Edit <%= @user.name %></li>
+<% end %>
+
 <h1>Edit <%= @user.name %></h1>
 <%= render 'form' %>

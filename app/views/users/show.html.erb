@@ -1,7 +1,13 @@
-<%= link_to 'Users', users_path %>
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Authors', users_path %></li>
+  <li><%= @user.name %></li>
+<% end %>
+
 <h1><%= @user.name %></h1>
 
 <ul>
   <li>Name: <%= @user.name %></li>
   <li>Email: <%= @user.email %></li>
 </ul>
+
+<p><%= link_to 'Edit', edit_user_path(@user) %></p>

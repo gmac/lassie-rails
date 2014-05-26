@@ -1,0 +1,10 @@
+<% content_for :breadcrumbs do %>
+  <li>Inventory</li>
+<% end %>
+
+<h1>Inventory</h1>
+<ul>
+  <li><%= link_to 'Lists', project_inventory_lists_path(@project) %></li>
+  <li><%= link_to 'Items', project_inventory_items_path(@project) %></li>
+  <li><%= link_to 'Combos', project_inventory_combos_path(@project) %></li>
+</ul>

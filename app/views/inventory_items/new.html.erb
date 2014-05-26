@@ -1,2 +1,8 @@
-<h1>New Inventory Item</h1>
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Inventory', project_inventory_path(@project) %></li>
+  <li><%= link_to 'Items', project_inventory_items_path(@project) %></li>
+  <li>New Item</li>
+<% end %>
+
+<h1>New Item</h1>
 <%= render partial: 'form' %>

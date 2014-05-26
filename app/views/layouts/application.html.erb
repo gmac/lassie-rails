@@ -6,13 +6,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
   <% if content_for?(:navbar) %>
-  <ul class="navbar">
-    <%= yield(:navbar) %>
-  </ul>
+  <ul class="navbar"><%= yield(:navbar) %></ul>
   <% end %>
+
   <div class="main">
+    <% if content_for?(:breadcrumbs) %>
+    <ul class="breadcrumbs"><%= yield(:breadcrumbs) %></ul>
+    <% end %>
+
     <%= yield %>
   </div>
+
 </body>
 </html>

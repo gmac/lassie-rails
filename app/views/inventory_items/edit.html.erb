@@ -1,2 +1,8 @@
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Inventory', project_inventory_path(@project) %></li>
+  <li><%= link_to 'Items', project_inventory_items_path(@project) %></li>
+  <li>Edit <%= @item.slug %></li>
+<% end %>
+
 <h1>Edit <%= @item.name %></h1>
 <%= render partial: 'form' %>

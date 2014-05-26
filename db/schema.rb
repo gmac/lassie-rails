@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140525111318) do
+ActiveRecord::Schema.define(version: 20140526045425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 20140525111318) do
     t.string  "slug"
     t.string  "actor"
     t.string  "subtitle_color"
+  end
+
+  create_table "behavior_types", force: true do |t|
+    t.integer "project_id"
+    t.string  "slug"
+  end
+
+  create_table "behaviors", force: true do |t|
+    t.integer "behavioral_id"
+    t.string  "behavioral_type"
+    t.integer "behavior_type_id"
+    t.string  "slug"
   end
 
   create_table "inventory_combos", force: true do |t|
@@ -59,6 +71,33 @@ ActiveRecord::Schema.define(version: 20140525111318) do
   create_table "projects_users", id: false, force: true do |t|
     t.integer "project_id"
     t.integer "user_id"
+  end
+
+  create_table "scene_layers", force: true do |t|
+    t.string  "slug"
+    t.string  "group"
+    t.integer "order"
+    t.boolean "visible"
+    t.boolean "editor_visible"
+    t.boolean "interactive"
+    t.string  "cursor_hover"
+    t.string  "parallax_axis"
+    t.boolean "float_enabled"
+    t.integer "float_x"
+    t.integer "float_y"
+    t.string  "hit_shape"
+    t.integer "hit_h"
+    t.integer "hit_w"
+    t.integer "hit_x"
+    t.integer "hit_y"
+    t.string  "img_state"
+    t.integer "img_h"
+    t.integer "img_w"
+    t.integer "img_x"
+    t.integer "img_y"
+    t.integer "map_orientation"
+    t.integer "map_x"
+    t.integer "map_y"
   end
 
   create_table "scenes", force: true do |t|

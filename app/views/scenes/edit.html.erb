@@ -1,2 +1,7 @@
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Scenes', project_scenes_path(@project) %></li>
+  <li>Edit <%= @scene.name %></li>
+<% end %>
+
 <h1>Edit <%= @scene.name %></h1>
 <%= render partial: 'form' %>

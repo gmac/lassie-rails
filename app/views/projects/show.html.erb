@@ -1,3 +1,8 @@
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Project', projects_path %></li>
+  <li><%= @project.name %></li>
+<% end %>
+
 <h1><%= @project.name %></h1>
 <h2>Collaborators</h2>
 <ul>

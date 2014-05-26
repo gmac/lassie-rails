@@ -1,2 +1,7 @@
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Project', projects_path %></li>
+  <li>New Project</li>
+<% end %>
+
 <h1>New Project</h1>
 <%= render partial: 'form', locals: { cancel_path: projects_path } %>

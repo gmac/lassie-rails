@@ -1,6 +1,6 @@
 class InventoryCombosController < ApplicationController
   layout 'project'
-  before_action :find_project
+  before_action :find_parent_project
   before_action :find_inventory_combo, only: [:show, :edit, :update, :destroy]
 
   def index

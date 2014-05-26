@@ -1,3 +1,9 @@
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Inventory', project_inventory_path(@project) %></li>
+  <li><%= link_to 'Combos', project_inventory_combos_path(@project) %></li>
+  <li><%= @combo.name %></li>
+<% end %>
+
 <h1><%= @combo.name %></h1>
 
 <ul>
@@ -6,4 +12,5 @@
   <% end %>
 </ul>
 
+<p><%= link_to "Manage behaviors (#{@combo.behaviors.count})", behavioral_api(@combo) %></p>
 <p><%= link_to 'Edit', edit_project_inventory_combo_path(@project, @combo) %></p>

@@ -1,2 +1,7 @@
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Actors', project_actors_path(@project) %></li>
+  <li>New</li>
+<% end %>
+
 <h1>Add an Actor</h1>
 <%= render partial: 'form' %>

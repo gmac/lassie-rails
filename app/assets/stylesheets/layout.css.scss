@@ -1,21 +1,47 @@
 .navbar {
   background-color: #eee;
+  height: 50px;
+  line-height: 50px;
   list-style: none;
   margin: 0;
   padding: 0 20px;
-  overflow: hidden;
+  
+  ul {
+    background-color: #eee;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+
+    li {
+      border-bottom: 1px solid #ccc;
+      float: none;
+      height: 25px;
+      line-height: 25px;
+    }
+  }
 
   li {
     float: left;
+    height: 100%;
+    position: relative;
+
+    &:hover ul {
+      display: block;
+    }
   }
 
   a {
     display: block;
-    height: 50px;
-    line-height: 50px;
+    height: 100%;
     padding: 0 15px;
   }
   
+  a.active,
   .active a {
     background-color: #fefefe;
   }
@@ -35,4 +61,14 @@
 .main {
   margin: 50px auto;
   max-width: 650px;
+}
+
+.breadcrumbs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  
+  li {
+    display: inline;
+  }
 }

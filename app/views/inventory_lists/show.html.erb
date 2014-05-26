@@ -1,3 +1,9 @@
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Inventory', project_inventory_path(@project) %></li>
+  <li><%= link_to 'Lists', project_inventory_lists_path(@project) %></li>
+  <li><%= @list.slug %></li>
+<% end %>
+
 <h1>Inventory List: <%= @list.slug %></h1>
 
 <ul>

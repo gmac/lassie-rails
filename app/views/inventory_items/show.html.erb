@@ -1,8 +1,15 @@
-<h1><%= @item.name %></h1>
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Inventory', project_inventory_path(@project) %></li>
+  <li><%= link_to 'Items', project_inventory_items_path(@project) %></li>
+  <li><%= @item.slug %></li>
+<% end %>
+
+<h1><%= @item.slug %></h1>
 
 <ul>
   <li><%= @item.name %></li>
   <li><%= @item.slug %></li>
 </ul>
 
+<p><%= link_to "Manage behaviors (#{ @item.behaviors.count })", behavioral_api(@item) %></p>
 <p><%= link_to 'Edit', edit_project_inventory_item_path(@project, @item) %>

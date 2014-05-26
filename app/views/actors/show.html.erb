@@ -1,3 +1,8 @@
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Actors', project_actors_path(@project) %></li>
+  <li><%= @actor.name %></li>
+<% end %>
+
 <h1><%= @actor.name %></h1>
 
 <ul>
@@ -11,4 +16,5 @@
   <dd><%= @actor.subtitle_color %></dd>
 </ul>
 
+<p><%= link_to "Manage behaviors (#{@actor.behaviors.count})", behavioral_api(@actor) %></p>
 <%= link_to "Edit", edit_project_actor_path(@project, @actor) %>
