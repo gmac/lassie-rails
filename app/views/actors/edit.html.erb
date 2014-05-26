@@ -3,5 +3,10 @@
   <li>Edit <%= @actor.name %></li>
 <% end %>
 
-<h1>Edit <%= @actor.name %></h1>
-<%= render partial: 'form' %>
+<% content_for :header do %>
+  <h1>Edit <%= @actor.name %></h1>
+<% end %>
+
+<% content_for :content do %>
+  <%= render partial: 'form' %>
+<% end %>

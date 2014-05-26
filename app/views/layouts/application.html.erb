@@ -5,19 +5,29 @@
   <%= stylesheet_link_tag "application", media: "all" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= yield(:body_class) if content_for?(:body_class) %>">
 
-  <% if content_for?(:navbar) %>
-  <ul class="navbar"><%= yield(:navbar) %></ul>
-  <% end %>
-
-  <div class="main">
-    <% if content_for?(:breadcrumbs) %>
-    <ul class="breadcrumbs"><%= yield(:breadcrumbs) %></ul>
+  <div class="navbar">
+    <% if signed_in? %>
+    <ul class="user-menu">
+      <li>Welcome <%= link_to current_user.name, current_user %></li>
+      <li>
+        <%= form_for current_user, method: 'delete' do |f| %>
+          <%= f.submit 'Sign out', id: 'signout' %>
+        <% end %>
+      </li>
+    </ul>
     <% end %>
 
-    <%= yield %>
+    <% if content_for?(:navbar) %>
+    <ul class="app-menu" role="navigation">
+      <%= yield(:navbar) %>
+    </ul>
+    <% end %>
   </div>
 
+  <%= yield(:main) if content_for?(:main) %>
+  <%= yield %>
+  
 </body>
 </html>

@@ -2,16 +2,19 @@
   <li>Actors</li>
 <% end %>
 
-<h1>Actors</h1>
+<% content_for :header do %>
+  <h1>Actors</h1>
+  <%= link_to '+', new_project_actor_path(@project) %>
+<% end %>
 
-<ul>
-  <% @project.actors.each do |actor| %>
-  <li>
-    <%= link_to actor.name, project_actor_path(@project, actor) %>
-    <%= link_to 'Edit', edit_project_actor_path(@project, actor) %>
-    <%= link_to 'Delete', project_actor_path(@project, actor), method: 'delete' %>
-  </li>
-  <% end %>
-</ul>
-
-<%= link_to 'Add another actor', new_project_actor_path(@project) %>
+<% content_for :content do %>
+  <ul>
+    <% @project.actors.each do |actor| %>
+    <li>
+      <%= link_to actor.name, project_actor_path(@project, actor) %>
+      <%= link_to 'Edit', edit_project_actor_path(@project, actor) %>
+      <%= link_to 'Delete', project_actor_path(@project, actor), method: 'delete' %>
+    </li>
+    <% end %>
+  </ul>
+<% end %>

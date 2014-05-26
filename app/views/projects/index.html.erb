@@ -2,16 +2,19 @@
   <li>Projects</li>
 <% end %>
 
-<h1>Projects</h1>
+<% content_for :header do %>
+  <h1>Projects</h1>
+  <%= link_to "Add a project", new_project_path %>
+<% end %>
 
-<ul>
-  <% @projects.each do |project| %>
-  <li>
-    <%= link_to project.name, project %>
-    <%= link_to 'Edit', edit_project_path(project) %>
-    <%= link_to 'Delete', project_path(project), method: 'delete' %>
-  </li>
-  <% end %>
-</ul>
-
-<%= link_to "Add a project", new_project_path %>
+<% content_for :content do %>
+  <ul>
+    <% @projects.each do |project| %>
+    <li>
+      <%= link_to project.name, project %>
+      <%= link_to 'Edit', edit_project_path(project) %>
+      <%= link_to 'Delete', project_path(project), method: 'delete' %>
+    </li>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,14 +1,18 @@
 <% content_for :breadcrumbs do %>
-  <li><%= link_to 'Project', projects_path %></li>
+  <li><%= link_to 'Projects', projects_path %></li>
   <li><%= @project.name %></li>
 <% end %>
 
-<h1><%= @project.name %></h1>
-<h2>Collaborators</h2>
-<ul>
-  <% @project.users.each do |user| %>
-    <li><%= content_tag :b, user.name %> (<%= user.email %>)</li>
-  <% end %>
-</ul>
+<% content_for :header do %>
+  <h1><%= @project.name %></h1>
+  <%= link_to 'Edit', edit_project_path(@project) %>
+<% end %>
 
-<%= link_to 'Edit', edit_project_path(@project) %>
+<% content_for :content do %>
+  <h2>Collaborators</h2>
+  <ul>
+    <% @project.users.each do |user| %>
+    <li><%= content_tag :b, user.name %> (<%= user.email %>)</li>
+    <% end %>
+  </ul>
+<% end %>

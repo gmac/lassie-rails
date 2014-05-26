@@ -1,0 +1,3 @@
+paths:
+  containerview: backbone.containerview
+  text: require-text

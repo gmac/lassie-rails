@@ -4,17 +4,20 @@
   <li><%= @list.slug %></li>
 <% end %>
 
-<h1>Inventory List: <%= @list.slug %></h1>
+<% content_for :header do %>
+  <h1>Inventory List: <%= @list.slug %></h1>
+  <%= link_to 'Edit', edit_project_inventory_list_path(@project, @list) %>
+<% end %>
 
-<ul>
-  <li><%= @list.slug %></li>
-</ul>
+<% content_for :content do %>
+  <ul>
+    <li><%= @list.slug %></li>
+  </ul>
 
-<h2>Items</h2>
-<ul>
-  <% @list.inventory_items.each do |item| %>
-    <li><%= content_tag :b, item.slug %></li>
-  <% end %>
-</ul>
-
-<p><%= link_to 'Edit', edit_project_inventory_list_path(@project, @list) %>
+  <h2>Items</h2>
+  <ul>
+    <% @list.inventory_items.each do |item| %>
+      <li><%= content_tag :b, item.slug %></li>
+    <% end %>
+  </ul>
+<% end %>

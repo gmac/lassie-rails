@@ -1,0 +1,17 @@
+<% content_for :main do %>
+<div class="main" role="main">
+  <% if content_for?(:breadcrumbs) %>
+  <ul class="breadcrumbs"><%= yield(:breadcrumbs) %></ul>
+  <% end %>
+
+  <% if content_for?(:header) %>
+  <div class="header"><%= yield(:header) %></div>
+  <% end %>
+
+  <% if content_for?(:content) %>
+  <div class="content"><%= yield(:content) %></div>
+  <% end %>
+</div>
+<% end %>
+
+<%= render template: "layouts/application" %>

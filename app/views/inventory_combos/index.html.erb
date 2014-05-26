@@ -3,16 +3,19 @@
   <li>Combos</li>
 <% end %>
 
-<h1>Inventory Combos</h1>
+<% content_for :header do %>
+  <h1>Inventory Combos</h1>
+  <%= link_to '+', new_project_inventory_combo_path(@project) %>
+<% end %>
 
-<ul>
-  <% @project.inventory_combos.each do |combo| %>
+<% content_for :content do %>
+  <ul>
+    <% @project.inventory_combos.each do |combo| %>
     <li>
       <%= link_to combo.name, project_inventory_combo_path(@project, combo) %>
       <%= link_to 'Edit', edit_project_inventory_combo_path(@project, combo) %>
       <%= link_to 'Delete', project_inventory_combo_path(@project, combo), method: 'delete' %>
     </li>
-  <% end %>
-</ul>
-
-<p><%= link_to 'Add an inventory combo', new_project_inventory_combo_path(@project) %></p>
+    <% end %>
+  </ul>
+<% end %>

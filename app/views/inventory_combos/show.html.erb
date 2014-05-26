@@ -4,13 +4,17 @@
   <li><%= @combo.name %></li>
 <% end %>
 
-<h1><%= @combo.name %></h1>
+<% content_for :header do %>
+  <h1><%= @combo.name %></h1>
+  <%= link_to 'Edit', edit_project_inventory_combo_path(@project, @combo) %>
+<% end %>
 
-<ul>
-  <% @combo.inventory_items.each do |item| %>
-  <li><%= link_to item.slug, project_inventory_item_path(@project, item) %>
-  <% end %>
-</ul>
+<% content_for :content do %>
+  <ul>
+    <% @combo.inventory_items.each do |item| %>
+    <li><%= link_to item.slug, project_inventory_item_path(@project, item) %>
+    <% end %>
+  </ul>
 
-<p><%= link_to "Manage behaviors (#{@combo.behaviors.count})", behavioral_api(@combo) %></p>
-<p><%= link_to 'Edit', edit_project_inventory_combo_path(@project, @combo) %></p>
+  <p><%= link_to "Manage behaviors (#{@combo.behaviors.count})", behavioral_api(@combo) %></p>
+<% end %>

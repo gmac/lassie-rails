@@ -2,16 +2,19 @@
   <li>Authors</li>
 <% end %>
 
-<h1>Authors</h1>
-
-<ul>
-<% @users.each do |user| %>
-  <li>
-    <%= link_to user.name, user %>
-    <%= link_to 'Edit', edit_user_path(user) %>
-    <%= link_to 'Delete', user, method: 'delete' %>
-  </li>
+<% content_for :header do %>
+  <h1>Authors</h1>
+  <%= link_to '+', new_user_path %>
 <% end %>
-</ul>
 
-<%= link_to 'Add a user', new_user_path %>
+<% content_for :content do %>
+  <ul>
+    <% @users.each do |user| %>
+    <li>
+      <%= link_to user.name, user %>
+      <%= link_to 'Edit', edit_user_path(user) %>
+      <%= link_to 'Delete', user, method: 'delete' %>
+    </li>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,1 +1,4 @@
-<h1><%= @scene.name %></h1>
+<% content_for :body_class, 'scene' %>
+
+<div id="scene"></div>
+<%= requirejs_include_tag 'editor/scenes/main' %>
