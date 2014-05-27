@@ -1,0 +1,19 @@
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Assets', project_assets_path(@project) %></li>
+  <li><%= @asset.slug %></li>
+<% end %>
+
+<% content_for :header do %>
+  <h1><%= @asset.slug %></h1>
+  <%= link_to "Edit", edit_project_asset_path(@project, @asset) %>
+<% end %>
+
+<% content_for :content do %>
+  <%= image_tag @asset.sprite_image.url, alt: '' %>
+  <ul>
+    <%= content_tag :li, @asset.category %>
+    <%= content_tag :li, link_to('Image', @asset.sprite_image.url) if @asset.sprite_image_file_name %>
+    <%= content_tag :li, link_to('Sheet', @asset.sprite_sheet.url) if @asset.sprite_sheet_file_name %>
+    <%= content_tag :li, link_to('Data', @asset.sprite_data.url) if @asset.sprite_data_file_name %>
+  </ul>
+<% end %>

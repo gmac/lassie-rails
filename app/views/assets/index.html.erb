@@ -1,0 +1,20 @@
+<% content_for :breadcrumbs do %>
+  <li>Assets</li>
+<% end %>
+
+<% content_for :header do %>
+  <h1>Assets</h1>
+  <%= link_to '+', new_project_asset_path(@project) %>
+<% end %>
+
+<% content_for :content do %>
+  <ul>
+    <% @project.assets.each do |asset| %>
+    <li>
+      <%= link_to asset.slug, project_asset_path(@project, asset) %>
+      <%= link_to 'Edit', edit_project_asset_path(@project, asset) %>
+      <%= link_to 'Delete', project_asset_path(@project, asset), method: 'delete' %>
+    </li>
+    <% end %>
+  </ul>
+<% end %>

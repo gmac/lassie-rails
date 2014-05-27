@@ -15,6 +15,7 @@ Lassie::Application.routes.draw do
   # Project resources:
   resources :projects do
     resources :actors
+    resources :assets
     resources :behavior_types
     resources :inventory_combos
     resources :inventory_items

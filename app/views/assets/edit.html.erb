@@ -1,10 +1,10 @@
 <% content_for :breadcrumbs do %>
-  <li><%= link_to 'Actors', project_actors_path(@project) %></li>
+  <li><%= link_to 'Assets', project_assets_path(@project) %></li>
   <li>Edit</li>
 <% end %>
 
 <% content_for :header do %>
-  <h1>Edit <%= @actor.name %></h1>
+  <h1>Edit <%= @asset.slug %></h1>
 <% end %>
 
 <% content_for :content do %>

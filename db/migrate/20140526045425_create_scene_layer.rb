@@ -1,6 +1,7 @@
 class CreateSceneLayer < ActiveRecord::Migration
   def change
     create_table :scene_layers do |t|
+      t.references :scene
       t.string :slug
       t.string :group
       t.integer :order

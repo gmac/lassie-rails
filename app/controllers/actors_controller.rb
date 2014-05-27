@@ -30,7 +30,7 @@ class ActorsController < ApplicationController
 
   def destroy
     @actor.destroy
-    redirect_to project_actors_path
+    redirect_to project_actors_path(@project)
   end
 
   private
@@ -40,6 +40,6 @@ class ActorsController < ApplicationController
   end
 
   def actor_params
-    params.require(:actor).permit(:name, :slug, :actor, :subtitle_color, :project_id)
+    params.require(:actor).permit(:name, :slug, :actor, :subtitle_color)
   end
 end

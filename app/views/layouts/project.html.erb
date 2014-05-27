@@ -16,6 +16,7 @@
     </ul>
   </li>
   <li><%= link_to 'Scenes', project_scenes_path(@project), class: navbar_active('scenes') %></li>
+  <li><%= link_to 'Assets', project_assets_path(@project), class: navbar_active('assets') %></li>
 <% end %>
 
 <%= render template: "layouts/editor" %>

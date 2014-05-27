@@ -1,0 +1,29 @@
+<%= form_for [@project, @asset] do |f| %>
+<ul>
+  <li>
+  <%= f.label :slug %>
+  <%= f.text_field :slug %>
+  </li>
+  <li>
+  <%= f.label :category %>
+  <%= f.text_field :category %>
+  </li>
+  <li>
+  <%= f.label :sprite_image %>
+  <%= f.file_field :sprite_image %>
+  <%= link_to("current", @asset.sprite_image.url) if @asset.sprite_image_file_name %>
+  </li>
+  <li>
+  <%= f.label :sprite_sheet %>
+  <%= f.file_field :sprite_sheet %>
+  <%= link_to("current", @asset.sprite_sheet.url) if @asset.sprite_sheet_file_name %>
+  </li>
+  <li>
+  <%= f.label :sprite_data %>
+  <%= f.file_field :sprite_data %>
+  <%= link_to("current", @asset.sprite_data.url) if @asset.sprite_data_file_name %>
+  </li>
+</ul>
+<%= f.submit 'Submit', id: 'submit' %>
+<%= link_to 'Cancel', project_assets_path(@project) %>
+<% end %>

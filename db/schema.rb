@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140526045425) do
+ActiveRecord::Schema.define(version: 20140527033436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,24 @@ ActiveRecord::Schema.define(version: 20140526045425) do
     t.string  "slug"
     t.string  "actor"
     t.string  "subtitle_color"
+  end
+
+  create_table "assets", force: true do |t|
+    t.integer  "project_id"
+    t.string   "slug"
+    t.string   "category"
+    t.string   "sprite_image_file_name"
+    t.string   "sprite_image_content_type"
+    t.integer  "sprite_image_file_size"
+    t.datetime "sprite_image_updated_at"
+    t.string   "sprite_sheet_file_name"
+    t.string   "sprite_sheet_content_type"
+    t.integer  "sprite_sheet_file_size"
+    t.datetime "sprite_sheet_updated_at"
+    t.string   "sprite_data_file_name"
+    t.string   "sprite_data_content_type"
+    t.integer  "sprite_data_file_size"
+    t.datetime "sprite_data_updated_at"
   end
 
   create_table "behavior_types", force: true do |t|
@@ -74,6 +92,7 @@ ActiveRecord::Schema.define(version: 20140526045425) do
   end
 
   create_table "scene_layers", force: true do |t|
+    t.integer "scene_id"
     t.string  "slug"
     t.string  "group"
     t.integer "order"
