@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.1'
 gem 'pg'
+gem 'paperclip'
+gem 'aws-sdk'
 gem 'sass-rails', '~> 4.0.2'
 gem 'requirejs-rails', '~> 0.9.3'
 gem 'uglifier', '>= 1.3.0'
@@ -14,5 +16,6 @@ group :doc do
 end
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'pry-rails'
 end
