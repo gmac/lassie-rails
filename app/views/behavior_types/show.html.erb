@@ -1,0 +1,15 @@
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Behavior Types', project_behavior_types_path(@project) %></li>
+  <li><%= @type.slug %></li>
+<% end %>
+
+<% content_for :header do %>
+  <h1><%= @type.slug %></h1>
+  <%= link_to 'Edit', edit_project_behavior_type_path(@project, @type) %>
+<% end %>
+
+<% content_for :content do %>
+  <ul>
+    <li>Slug: <%= @type.slug %></li>
+  </ul>
+<% end %>

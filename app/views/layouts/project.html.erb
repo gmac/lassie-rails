@@ -1,6 +1,12 @@
 <% content_for :navbar do %>
   <li class="back"><%= link_to 'Projects', projects_path %></li>
-  <%= navbar_item('actors') { link_to 'Actors', project_actors_path(@project) } %>
+  <li>
+    <%= link_to 'Setup', project_setup_path(@project), class: navbar_active_list(%(setup actors behavior_types)) %>
+    <ul>
+      <li><%= link_to 'Behavior Types', project_behavior_types_path(@project), class: navbar_active('behavior_types') %></li>
+      <li><%= link_to 'Actors', project_actors_path(@project), class: navbar_active('actors') %></li>
+    </ul>
+  </li>
   <li>
     <%= link_to 'Inventory', project_inventory_path(@project), class: navbar_active_list(%(inventory inventory_lists inventory_items inventory_combos)) %>
     <ul>
@@ -9,7 +15,7 @@
       <li><%= link_to 'Combos', project_inventory_combos_path(@project), class: navbar_active('inventory_combos') %></li>
     </ul>
   </li>
-  <%= navbar_item('scenes') { link_to 'Scenes', project_scenes_path(@project) } %>
+  <li><%= link_to 'Scenes', project_scenes_path(@project), class: navbar_active('scenes') %></li>
 <% end %>
 
 <%= render template: "layouts/editor" %>

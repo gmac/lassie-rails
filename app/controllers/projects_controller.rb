@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   layout :select_layout
   before_action :find_project, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @projects = Project.all
   end
@@ -31,8 +31,12 @@ class ProjectsController < ApplicationController
     redirect_to @project
   end
 
+  def setup
+    find_parent_project
+  end
+
   def inventory
-    @project = find_parent_project
+    find_parent_project
   end
 
   private

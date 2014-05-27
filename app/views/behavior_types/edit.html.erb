@@ -1,0 +1,12 @@
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Behavior Types', project_behavior_types_path(@project) %></li>
+  <li>Edit</li>
+<% end %>
+
+<% content_for :header do %>
+  <h1>Edit: <%= @type.slug %></h1>
+<% end %>
+
+<% content_for :content do %>
+  <%= render partial: 'form' %>
+<% end %>

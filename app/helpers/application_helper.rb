@@ -1,9 +1,4 @@
 module ApplicationHelper
-  def navbar_item(name)
-    active = (params[:controller] == name)
-    "<li#{active ? ' class="active"' : ''}>#{yield}</li>".html_safe
-  end
-
   def navbar_active(controller)
     'active' if params[:controller] == controller
   end

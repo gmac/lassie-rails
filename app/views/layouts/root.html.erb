@@ -1,6 +1,6 @@
 <% content_for :navbar do %>
-  <%= navbar_item('projects') { link_to 'Projects', projects_path } %>
-  <%= navbar_item('users') { link_to 'Authors', users_path } %>
+  <li><%= link_to 'Projects', projects_path, class: navbar_active('projects') %></li>
+  <li><%= link_to 'Authors', users_path, class: navbar_active('users') %></li>
 <% end %>
 
 <%= render template: "layouts/editor" %>

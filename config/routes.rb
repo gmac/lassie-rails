@@ -22,6 +22,7 @@ Lassie::Application.routes.draw do
     resources :scenes
 
     # Landing pages:
+    get '/setup' => 'projects#setup'
     get '/inventory' => 'projects#inventory'
   end
 end

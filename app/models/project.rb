@@ -7,4 +7,8 @@ class Project < ActiveRecord::Base
   has_many :inventory_items, dependent: :destroy
   has_many :inventory_lists, dependent: :destroy
   has_many :scenes, dependent: :destroy
+
+  after_create do
+    self.behavior_types.create(slug: 'generic')
+  end
 end

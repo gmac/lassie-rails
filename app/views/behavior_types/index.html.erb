@@ -1,0 +1,20 @@
+<% content_for :breadcrumbs do %>
+  <li>Behavior Types</li>
+<% end %>
+
+<% content_for :header do %>
+  <h1>Behavior Types</h1>
+  <%= link_to "+", new_project_behavior_type_path(@project) %>
+<% end %>
+
+<% content_for :content do %>
+  <ul>
+    <% @types.each do |type| %>
+    <li>
+      <%= link_to type.slug, project_behavior_type_path(@project, type) %>
+      <%= link_to 'Edit', edit_project_behavior_type_path(@project, type) %>
+      <%= link_to 'Delete', project_behavior_type_path(@project, type), method: 'delete' %>
+    </li>
+    <% end %>
+  </ul>
+<% end %>

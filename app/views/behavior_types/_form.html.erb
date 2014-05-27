@@ -1,0 +1,10 @@
+<%= form_for [@project, @type] do |f| %>
+<ul>
+  <li>
+  <%= f.label :slug %>
+  <%= f.text_field :slug %>
+  </li>
+</ul>
+<%= f.submit "Submit" %>
+<%= link_to 'Cancel', project_behavior_types_path(@project) %>
+<% end %>

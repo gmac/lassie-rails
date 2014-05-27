@@ -7,10 +7,18 @@
   <% if content_for?(:header) %>
   <div class="header"><%= yield(:header) %></div>
   <% end %>
+  
+  <div class="content">
+    <% if flash.any? %>
+    <ul class="flash">
+      <% flash.each do |name, msg| %>
+      <%= content_tag :li, msg, class: name %>
+      <% end %>
+    </ul>
+    <% end %>
 
-  <% if content_for?(:content) %>
-  <div class="content"><%= yield(:content) %></div>
-  <% end %>
+    <%= yield(:content) if content_for?(:content) %>
+  </div>
 </div>
 <% end %>
 
