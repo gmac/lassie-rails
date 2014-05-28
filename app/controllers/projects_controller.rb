@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
   layout :select_layout
+  
+  before_action :require_signin
   before_action :find_project, only: [:show, :edit, :update, :destroy]
 
   def index

@@ -29,5 +29,7 @@ Lassie::Application.routes.draw do
   # JSON API methods
   resources :behaviors, except: [:new, :edit]
   resources :scene_layers, except: [:new, :edit]
+  resources :scene_grids, except: [:new, :edit]
+  resources :scene_matricies, except: [:new, :edit]
 
 end

@@ -1,4 +1,8 @@
 class SceneLayersController < ApplicationController
+  include ScenesHelper
+
+  protect_from_forgery with: :null_session
+  before_action :find_parent_scene
   before_action :find_layer, exclude: [:index, :create]
 
   def index
@@ -6,7 +10,7 @@ class SceneLayersController < ApplicationController
   end
 
   def create
-    render json: SceneLayer.create(scene_params)
+    render json: SceneLayer.create(layer_params)
   end
 
   def show
@@ -14,7 +18,7 @@ class SceneLayersController < ApplicationController
   end
 
   def update
-    render json: @layer.update(scene_params)
+    render json: @layer.update(layer_params)
   end
 
   def destroy
@@ -32,7 +36,33 @@ class SceneLayersController < ApplicationController
     @layer = SceneLayer.find(params[:id])
   end
 
-  def scene_params
-
+  def layer_params
+    params.permit(
+      :scene_id,
+      :slug,
+      :group,
+      :order,
+      :visible,
+      :editor_visible,
+      :interactive,
+      :cursor_hover,
+      :parallax_axis,
+      :float_enabled,
+      :float_x,
+      :float_y,
+      :hit_shape,
+      :hit_h,
+      :hit_w,
+      :hit_x,
+      :hit_y,
+      :img_state,
+      :img_h,
+      :img_w,
+      :img_x,
+      :img_y,
+      :map_orientation,
+      :map_x,
+      :map_y
+    )
   end
 end

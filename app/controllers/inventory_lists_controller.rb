@@ -1,5 +1,7 @@
 class InventoryListsController < ApplicationController
   layout 'project'
+
+  before_action :require_signin
   before_action :find_parent_project
   before_action :find_inventory_list, only: [:show, :edit, :update, :destroy]
 
