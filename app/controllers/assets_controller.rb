@@ -5,6 +5,14 @@ class AssetsController < ApplicationController
   before_action :find_asset, only: [:show, :edit, :update, :destroy]
 
   def index
+    @assets = []
+    @categories = []
+
+    if params.has_key?(:category)
+      @assets = Asset.where(category: params[:category])
+    else
+      @categories = Asset.uniq.pluck(:category)
+    end
   end
 
   def new
@@ -23,8 +31,11 @@ class AssetsController < ApplicationController
   end
 
   def update
-    @asset.update(asset_params)
-    redirect_to project_asset_path(@project, @asset)
+    if @asset.update(asset_params)
+      redirect_to project_asset_path(@project, @asset)
+    else
+      render :edit
+    end
   end
 
   def destroy

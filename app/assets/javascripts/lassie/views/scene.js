@@ -107,7 +107,7 @@ define(function(require) {
   // ----------------------------------------------------------------
 	function SceneView(id, options) {
 	  this.id = id;
-	  this.model = new SceneModel({_id: id});
+	  this.model = new SceneModel({id: id});
 	  this.layers = this.model.layers;
 	  this.grids = this.model.grids;
 	  this.matricies = this.model.matricies;

@@ -9,10 +9,10 @@
 
   <div class="navbar">
     <% if signed_in? %>
-    <ul class="user-menu">
+    <ul id="user-menu" class="user-menu">
       <li>Welcome <%= link_to current_user.name, current_user %></li>
       <li>
-        <%= form_for current_user, method: 'delete' do |f| %>
+        <%= form_for :session, url: signout_path, method: 'delete' do |f| %>
           <%= f.submit 'Sign out', id: 'signout' %>
         <% end %>
       </li>
@@ -20,7 +20,7 @@
     <% end %>
 
     <% if content_for?(:navbar) %>
-    <ul class="app-menu" role="navigation">
+    <ul id="app-menu" class="app-menu" role="navigation">
       <%= yield(:navbar) %>
     </ul>
     <% end %>

@@ -1,12 +1,13 @@
-<% content_for :breadcrumbs do %>
-  <li><%= link_to 'Scenes', project_scenes_path(@project) %></li>
-  <li>Edit <%= @scene.name %></li>
+<% content_for :navbar do %>
+  <li class="back"><%= link_to 'Scenes', project_scenes_path(@project) %></li>
+  <li><a href="#layers">Layers</a></li>
+  <li><a href="#grids">Grids</a></li>
+  <li><a href="#matricies">Matricies</a></li>
 <% end %>
 
-<% content_for :header do %>
-  <h1>Edit <%= @scene.name %></h1>
-<% end %>
+<div id="scene">
+  <div id="scene-sidebar"></div>
+  <div id="scene-preview"></div>
+</div>
 
-<% content_for :content do %>
-  <%= render partial: 'form' %>
-<% end %>
+<%= requirejs_include_tag 'editor/scenes/main' %>

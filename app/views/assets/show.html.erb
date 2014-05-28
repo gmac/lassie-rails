@@ -1,5 +1,6 @@
 <% content_for :breadcrumbs do %>
   <li><%= link_to 'Assets', project_assets_path(@project) %></li>
+  <li><%= link_to @asset.category, project_asset_category_path(@project, @asset.category) %></li>
   <li><%= @asset.slug %></li>
 <% end %>
 

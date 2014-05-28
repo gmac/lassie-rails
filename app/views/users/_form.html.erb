@@ -16,10 +16,13 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
   </li>
+  
+  <% if admin_user? %>
   <li>
   <%= f.label :admin %>
   <%= f.check_box :admin %>
   </li>
+  <% end %>
 </ul>
 <%= f.submit 'Submit', id: 'submit' %>
 <% end %>

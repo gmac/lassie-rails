@@ -4,7 +4,7 @@
 
 <% content_for :header do %>
   <h1>Authors</h1>
-  <%= link_to '+', new_user_path %>
+  <%= link_to '+', new_user_path if admin_user? %>
 <% end %>
 
 <% content_for :content do %>
@@ -12,8 +12,10 @@
     <% @users.each do |user| %>
     <li>
       <%= link_to user.name, user %>
-      <%= link_to 'Edit', edit_user_path(user) %>
-      <%= link_to 'Delete', user, method: 'delete' %>
+      <% if admin_user? %>
+        <%= link_to 'Edit', edit_user_path(user) %>
+        <%= link_to 'Delete', user, method: 'delete' %>
+      <% end %>
     </li>
     <% end %>
   </ul>

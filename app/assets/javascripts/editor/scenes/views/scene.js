@@ -1,6 +1,7 @@
 define(function(require) {
 
   // Imports:
+  var $ = require('jquery');
   var Backbone = require('backbone');
   var ContainerView = require('containerview');
   var Utils = require('editor/common/utils');
@@ -9,49 +10,68 @@ define(function(require) {
   
   // Implementation:
   
+  var SceneRouter = Backbone.Router.extend({
+    initialize: function(options) {
+      this.model = options.model;
+      this.listenTo(this.model, 'change:viewState', this.push);
+    },
+    
+    routes: {
+      'layers': 'pull',
+      'grids': 'pull',
+      'matricies': 'pull',
+      '*default': 'pull',
+      '': 'pull'
+    },
+    
+    pull: function() {
+      this.model.view(Backbone.history.fragment);
+    },
+    
+    push: function() {
+      if (this.model.view() !== Backbone.history.fragment) {
+        this.navigate(this.model.view());
+      }
+    }
+  });
+
+
   // Scene Detail Navbar View
   // ----------------------------------------------------------------
-  var SceneLayoutNavView = Backbone.View.extend({
-    el: '#layout-menu',
+  var SceneNavView = Backbone.View.extend({
+    el: '#app-menu',
+
     initialize: function() {
-      this.model = LayoutState.instance();
-      this.listenTo(this.model, 'change', this.render);
-      this.render();
+      this.listenTo(this.model, 'change:viewState', this.render);
     },
     
     render: function() {
-      this.$('li').removeClass('active');
-      this.$('[data-ui="'+this.model.view()+'"]').parent().addClass('active');
-    },
-    
-    events: {
-      'click [data-ui]': 'onUI'
-    },
-    
-    onUI: function(evt) {
-      evt.preventDefault();
-      var state = this.$(evt.currentTarget).attr('data-ui');
-      this.model.view(state);
+      this.$('a')
+        .removeClass('active')
+        .filter('[href="#'+ this.model.view() +'"]')
+        .addClass('active');
     }
   });
-  
+
+
   // Scene Layout View
   // ----------------------------------------------------------------
-  var SceneLayoutView = ContainerView.extend({
-    el: '#layout',
+  var SceneView = ContainerView.extend({
+    el: '#scene',
     
     initialize: function(options) {
       this.state = LayoutState.instance().reset();
-      this.win = $(window).on('resize.scene', _.debounce(_.bind(this.resize, this), 200));
-      this.navbar = this.addSubview(new SceneLayoutNavView());
-      this.sidebar = this.createSubcontainer('#layout-sidebar');
+      this.router = new SceneRouter({model: this.state});
+      this.win = $(window).on('resize', _.debounce(_.bind(this.resize, this), 200));
+      this.navbar = this.addSubview(new SceneNavView({model: this.state}));
+      this.sidebar = this.createSubcontainer('#scene-sidebar');
       this.lassie = new Lassie();
       this.resize();
       
       // Create and display a new Lassie instance:
       this.lassie.loadScene(options.id);
       this.lassie.start();
-      this.$('#layout-preview').append(this.lassie.view);
+      this.$('#scene-preview').append(this.lassie.view);
       
       // Create state manager model,
       // and cache references to the current data sources we're going to use:
@@ -67,7 +87,9 @@ define(function(require) {
       
       // Create navbar and sidebar:
       this.listenTo(this.state, 'change:viewState', this.render);
-      this.render();
+      
+      Backbone.history.start();
+      this.state.view(this.state.view() || 'layers');
     },
     
     resize: function() {
@@ -85,14 +107,13 @@ define(function(require) {
     },
     
     render: function() {
-      var view = this.state.view();
       var editor = [];
       var self = this;
       
-      switch (view) {
-        case 'layer': editor.push('./layers'); break;
-        case 'grid': editor.push('./grids'); break;
-        case 'matrix': editor.push('./matricies'); break;
+      switch (this.state.view()) {
+        case 'layers': editor.push('./layers'); break;
+        case 'grids': editor.push('./grids'); break;
+        case 'matricies': editor.push('./matricies'); break;
       }
       
       if (editor.length) {
@@ -102,15 +123,8 @@ define(function(require) {
       } else {
         this.sidebar.close();
       }
-    },
-    
-    dispose: function() {
-      $(window).off('resize.scene');
-      this.lassie.stop();
-      this.state.reset();
-      this.lassie = this.state = null;
     }
   });
   
-  return SceneLayoutView;
+  return SceneView;
 });

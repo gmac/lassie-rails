@@ -12,7 +12,7 @@ define(function(require) {
       sceneId: null,
       sceneView: null,
       sceneModel: null,
-      viewState: 'layer',
+      viewState: '',
       viewWidth: 0,
       viewHeight: 0
     },

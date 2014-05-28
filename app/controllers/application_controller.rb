@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def index
-    redirect_to login_path if !signed_in?
+    redirect_to signin_path if !signed_in?
   end
 end

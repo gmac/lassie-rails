@@ -6,7 +6,6 @@ define(function(require) {
 	// Layer
   // ----------------------------------------------------------------
 	var SceneLayerModel = Backbone.Model.extend({
-	  idAttribute: '_id',
 	  defaults: {
 	    behaviors: [],
       cursor_hover: null,
@@ -64,7 +63,7 @@ define(function(require) {
 	});
 	
 	var SceneLayerCollection = Backbone.Collection.extend({
-	  url: Data.apiPath('layers'),
+	  url: Data.apiPath('scene_layers'),
 	  model: SceneLayerModel,
 	  
 		comparator: function(model) {
@@ -89,7 +88,6 @@ define(function(require) {
 	// Grid
   // ----------------------------------------------------------------
 	var SceneGrid = Backbone.Model.extend({
-	  idAttribute: '_id',
 	  defaults: {
 	    data: '{}',
 	    scene_id: null,
@@ -106,14 +104,13 @@ define(function(require) {
   });
   
 	var SceneGridCollection = Backbone.Collection.extend({
-	  url: Data.apiPath('grids'),
+	  url: Data.apiPath('scene_grids'),
 	  model: SceneGrid
   });
   
   // Matrix
   // ----------------------------------------------------------------
   var SceneMatrix = Backbone.Model.extend({
-	  idAttribute: '_id',
 	  defaults: {
 	    axis: 'y',
 	    color1: 0x000000,
@@ -130,15 +127,14 @@ define(function(require) {
   });
   
 	var SceneMatrixCollection = Backbone.Collection.extend({
-	  url: Data.apiPath('matricies'),
+	  url: Data.apiPath('scene_matricies'),
 	  model: SceneMatrix
   });
   
   // Scene
   // ----------------------------------------------------------------
 	var SceneModel = Backbone.Model.extend({
-	  urlRoot: Data.apiPath('scenes'),
-	  idAttribute: '_id',
+	  urlRoot: Data.apiPath('projects/1/scenes'),
 	  
 	  defaults: {
 	    slug: '',

@@ -1,15 +1,23 @@
-<h1>Sign In</h1>
+<% content_for :navbar do %>
+  <li>Lassie</li>
+<% end %>
 
-<%= form_for(:session, url: sessions_path) do |f| %>
-  <ul>
-    <li>
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-    </li>
-    <li>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </li>
-  </ul>
-  <%= f.submit "Sign in" %>
+<% content_for :header do %>
+  <h1>Sign In</h1>
+<% end %>
+
+<% content_for :content do %>
+  <%= form_for :session, url: sessions_path do |f| %>
+    <ul>
+      <li>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </li>
+      <li>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </li>
+    </ul>
+    <%= f.submit "Sign in", id: 'signin' %>
+  <% end %>
 <% end %>

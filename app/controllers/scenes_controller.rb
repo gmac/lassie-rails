@@ -17,17 +17,25 @@ class ScenesController < ApplicationController
     redirect_to project_scenes_path(@project)
   end
 
-  def show
-    render layout: 'scene'
-  end
-
   def edit
+    render layout: 'application'
   end
 
+  def show
+    render json: {
+      layers: [],
+      grids: [],
+      matricies: []
+    }
+  end
+  
   def update
+    
   end
 
   def destroy
+    @scene.destroy
+    redirect_to project_scenes_path(@project)
   end
 
   private

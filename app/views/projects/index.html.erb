@@ -4,17 +4,21 @@
 
 <% content_for :header do %>
   <h1>Projects</h1>
-  <%= link_to "Add a project", new_project_path %>
+  <%= link_to "+", new_project_path if admin_user? %>
 <% end %>
 
 <% content_for :content do %>
   <ul>
     <% @projects.each do |project| %>
-    <li>
-      <%= link_to project.name, project %>
-      <%= link_to 'Edit', edit_project_path(project) %>
-      <%= link_to 'Delete', project, method: 'delete' %>
-    </li>
+      <% if admin_user? || project.users.include?(current_user) %>
+      <li>
+        <%= link_to project.name, project %>
+        <% if admin_user? %>
+          <%= link_to 'Edit', edit_project_path(project) %>
+          <%= link_to 'Delete', project, method: 'delete' %>
+        <% end %>
+      </li>
+      <% end %>
     <% end %>
   </ul>
 <% end %>

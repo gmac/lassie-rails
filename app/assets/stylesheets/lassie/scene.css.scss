@@ -1,10 +1,3 @@
-body {
-  background: #333 image-url('bgtile.png') repeat;
-  font: 13px/1.4 Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
 ul {
   list-style: none;
 }
@@ -14,11 +7,11 @@ ul, li {
   padding: 0;
 }
 
-#layout-menu {
+#scene-menu {
   margin: 0;
 }
 
-#layout-sidebar {
+#scene-sidebar {
   background-color: #fff;
   left: 0;
   overflow-x: hidden;
@@ -27,7 +20,7 @@ ul, li {
   width: 200px;
 }
 
-#layout-preview {
+#scene-preview {
   margin-left: 200px;
 }
 

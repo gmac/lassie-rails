@@ -1,4 +1,5 @@
 <%= form_for [@project, @asset] do |f| %>
+<%= render 'common/errors', object: f.object %>
 <ul>
   <li>
   <%= f.label :slug %>

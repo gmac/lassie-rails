@@ -4,11 +4,10 @@ Lassie::Application.routes.draw do
   root 'projects#index'
 
   # Login / Logout:
-  get '/login' => 'sessions#new'
-  delete '/logout' => 'sessions#destroy'
+  get '/login' => 'sessions#new', as: 'signin'
+  delete '/logout' => 'sessions#destroy', as: 'signout'
 
   # Sessions / Users / Behaviors
-  resources :behaviors, except: [:new, :edit]
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
   
@@ -26,4 +25,9 @@ Lassie::Application.routes.draw do
     get '/setup' => 'projects#setup'
     get '/inventory' => 'projects#inventory'
   end
+
+  # JSON API methods
+  resources :behaviors, except: [:new, :edit]
+  resources :scene_layers, except: [:new, :edit]
+
 end
