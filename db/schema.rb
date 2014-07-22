@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140527033436) do
+ActiveRecord::Schema.define(version: 20140528142930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,12 @@ ActiveRecord::Schema.define(version: 20140527033436) do
     t.integer "user_id"
   end
 
+  create_table "scene_grids", force: true do |t|
+    t.integer "scene_id"
+    t.string  "slug"
+    t.json    "data"
+  end
+
   create_table "scene_layers", force: true do |t|
     t.integer "scene_id"
     t.string  "slug"
@@ -117,6 +123,10 @@ ActiveRecord::Schema.define(version: 20140527033436) do
     t.integer "map_orientation"
     t.integer "map_x"
     t.integer "map_y"
+  end
+
+  create_table "scene_matrices", force: true do |t|
+    t.string "slug"
   end
 
   create_table "scenes", force: true do |t|
