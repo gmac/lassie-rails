@@ -2,7 +2,7 @@
   <li class="back"><%= link_to 'Scenes', project_scenes_path(@project) %></li>
   <li><a href="#layers">Layers</a></li>
   <li><a href="#grids">Grids</a></li>
-  <li><a href="#matricies">Matricies</a></li>
+  <li><a href="#matrices">Matrices</a></li>
 <% end %>
 
 <div id="scene">
@@ -10,4 +10,8 @@
   <div id="scene-preview"></div>
 </div>
 
-<%= requirejs_include_tag 'editor/scenes/main' %>
+<%= requirejs_include_tag %>
+<script>
+  require.config({urlArgs: 'bust='+Date.now()});
+  require(['editor/scenes/main']);
+</script>

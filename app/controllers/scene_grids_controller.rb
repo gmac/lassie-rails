@@ -1,16 +1,17 @@
 class SceneGridsController < ApplicationController
-  include ScenesHelper
 
   protect_from_forgery with: :null_session
-  before_action :find_parent_scene
-  before_action :find_grid, exclude: [:index, :create]
+  before_action :find_grid, except: [:index, :create]
 
   def index
-
+    # render json: @scene.scene_grids
   end
 
   def create
-    render json: SceneGrid.create(grid_params)
+    @grid = SceneGrid.new(grid_params)
+    if @grid.save
+      render json: @grid
+    end
   end
 
   def show
@@ -18,12 +19,15 @@ class SceneGridsController < ApplicationController
   end
 
   def update
-    render json: @grid.update(grid_params)
+    if @grid.update(grid_params)
+      render json: @grid
+    end
   end
 
   def destroy
-    @grid.destroy
-    render json: @grid
+    if @grid.destroy
+      render json: @grid
+    end
   end
 
   private
@@ -33,7 +37,7 @@ class SceneGridsController < ApplicationController
   end
 
   def grid_params
-    params.permit(
+    params.require(:scene_grid).permit(
       :scene_id,
       :slug,
       :data

@@ -8,7 +8,7 @@ define(function(require) {
       grids: null,
       layers: null,
       layoutManager: null,
-      matricies: null,
+      matrices: null,
       sceneId: null,
       sceneView: null,
       sceneModel: null,

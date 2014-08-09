@@ -110,7 +110,7 @@ define(function(require) {
 	  this.model = new SceneModel({id: id});
 	  this.layers = this.model.layers;
 	  this.grids = this.model.grids;
-	  this.matricies = this.model.matricies;
+	  this.matrices = this.model.matrices;
 	  
 	  this.view = new PIXI.DisplayObjectContainer();
 	  this.viewLayers = [];

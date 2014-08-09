@@ -19,7 +19,7 @@ define(function(require) {
     routes: {
       'layers': 'pull',
       'grids': 'pull',
-      'matricies': 'pull',
+      'matrices': 'pull',
       '*default': 'pull',
       '': 'pull'
     },
@@ -79,7 +79,7 @@ define(function(require) {
       this.state.set({
         grids: scene.grids,
         layers: scene.layers,
-        matricies: scene.matricies,
+        matrices: scene.matrices,
         sceneId: scene.id,
         sceneModel: scene.model,
         sceneView: scene
@@ -109,11 +109,11 @@ define(function(require) {
     render: function() {
       var editor = [];
       var self = this;
-      
+
       switch (this.state.view()) {
         case 'layers': editor.push('./layers'); break;
         case 'grids': editor.push('./grids'); break;
-        case 'matricies': editor.push('./matricies'); break;
+        case 'matrices': editor.push('./matrices'); break;
       }
       
       if (editor.length) {

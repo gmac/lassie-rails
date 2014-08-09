@@ -16,7 +16,7 @@ define(function(require) {
     title: 'Matrix',
     
     collection: function() {
-      return LayoutState.get('matricies');
+      return LayoutState.get('matrices');
     },
     
     serialize: function() {
@@ -121,15 +121,15 @@ define(function(require) {
     }
   });
   
-  // Matricies View
+  // Matrices View
   // ----------------------------------------------------------------
-  var MatriciesView = ContainerView.extend({
+  var MatricesView = ContainerView.extend({
     className: 'scene-matrix',
-    template: Utils.parseTemplate(require('text!../tmpl/matricies.html')),
+    template: Utils.parseTemplate(require('text!../tmpl/matrices.html')),
     
     initialize: function() {
       // Configure collection and selected model references:
-      this.collection = LayoutState.get('matricies');
+      this.collection = LayoutState.get('matrices');
       this.collection.selected = null;
       
       // Populate template and create detail view container:
@@ -182,5 +182,5 @@ define(function(require) {
     }
   });
   
-  return MatriciesView;
+  return MatricesView;
 });

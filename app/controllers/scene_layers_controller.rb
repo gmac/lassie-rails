@@ -1,16 +1,17 @@
 class SceneLayersController < ApplicationController
-  include ScenesHelper
-
+  
   protect_from_forgery with: :null_session
-  before_action :find_parent_scene
-  before_action :find_layer, exclude: [:index, :create]
+  before_action :find_layer, except: [:index, :create]
 
   def index
-
+    #render json: @scene.scene_layers
   end
 
   def create
-    render json: SceneLayer.create(layer_params)
+    @layer = SceneLayer.new(layer_params)
+    if @layer.save
+      render json: @layer
+    end
   end
 
   def show
@@ -18,12 +19,15 @@ class SceneLayersController < ApplicationController
   end
 
   def update
-    render json: @layer.update(layer_params)
+    if @layer.update(layer_params)
+      render json: @layer
+    end
   end
 
   def destroy
-    @layer.destroy
-    render json: @layer
+    if @layer.destroy
+      render json: @layer
+    end
   end
 
   def order
@@ -37,7 +41,7 @@ class SceneLayersController < ApplicationController
   end
 
   def layer_params
-    params.permit(
+    params.require(:scene_layer).permit(
       :scene_id,
       :slug,
       :group,

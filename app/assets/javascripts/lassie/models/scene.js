@@ -95,7 +95,7 @@ define(function(require) {
 	  },
 	  
 	  read: function() {
-	    return JSON.parse(this.get('data'));
+	    return this.get('data');
 	  },
 	  
 	  write: function(data) {
@@ -127,7 +127,7 @@ define(function(require) {
   });
   
 	var SceneMatrixCollection = Backbone.Collection.extend({
-	  url: Data.apiPath('scene_matricies'),
+	  url: Data.apiPath('scene_matrices'),
 	  model: SceneMatrix
   });
   
@@ -145,7 +145,7 @@ define(function(require) {
 	    data = data || {};
 		  this.layers = new SceneLayerCollection(data.layers || [], options);
 		  this.grids = new SceneGridCollection(data.grids || [], options);
-		  this.matricies = new SceneMatrixCollection(data.matricies || [], options);
+		  this.matrices = new SceneMatrixCollection(data.matrices || [], options);
 		},
 		
 	  load: function() {
@@ -162,9 +162,9 @@ define(function(require) {
 	      this.grids.reset(data.grids);
 	      delete data.grids;
 	    }
-	    if (data.matricies) {
-	      this.matricies.reset(data.matricies);
-	      delete data.matricies;
+	    if (data.matrices) {
+	      this.matrices.reset(data.matrices);
+	      delete data.matrices;
 	    }
 		  return data;
 		}

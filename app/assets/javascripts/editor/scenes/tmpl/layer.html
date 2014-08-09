@@ -46,14 +46,9 @@
 <fieldset class="form-group">
   <label for="layer-map-orientation">Walk-to Orientation</label>
   <select id="layer-map-orientation" class="form-control" name="map_orientation" data-type="number">
-    <option value="0" <%= d.map_orientation === 0 ? 'selected="selected"' : '' %>>Back</option>
-    <option value="1" <%= d.map_orientation === 1 ? 'selected="selected"' : '' %>>Right Back-Quarter</option>
-    <option value="2" <%= d.map_orientation === 2 ? 'selected="selected"' : '' %>>Right Side</option>
-    <option value="3" <%= d.map_orientation === 3 ? 'selected="selected"' : '' %>>Right Front-Quarter</option>
-    <option value="4" <%= d.map_orientation === 4 ? 'selected="selected"' : '' %>>Front</option>
-    <option value="5" <%= d.map_orientation === 5 ? 'selected="selected"' : '' %>>Left Front-Quarter</option>
-    <option value="6" <%= d.map_orientation === 6 ? 'selected="selected"' : '' %>>Left Side</option>
-    <option value="7" <%= d.map_orientation === 7 ? 'selected="selected"' : '' %>>Left Back-Quarter</option>
+  <% _.each(['Back', 'Right Back-Quarter', 'Right Side', 'Right Front-Quarter', 'Front', 'Left Front-Quarter', 'Left Side', 'Left Back-Quarter'], function(label, index) { %>
+    <option value="<%= index %>" <%= d.map_orientation === index ? 'selected="selected"' : '' %>><%= label %></option>
+  <% }); %>
   </select>
 </fieldset>
 <fieldset class="form-group">
@@ -75,9 +70,9 @@
   <fieldset class="form-group">
     <label for="layer-hit-shape">Hit Area Shape</label>
     <select id="layer-hit-shape" class="form-control" name="hit_shape">
-      <option value="rect">Rectangle</option>
-      <option value="oval" <%= d.hit_shape === 'oval' ? 'selected="selected"' : '' %>>Ellipse</option>
-      <option value="px" <%= d.hit_shape === 'px' ? 'selected="selected"' : '' %>>Pixels</option>
+    <% _.each({rect: 'Rectangle', oval: 'Ellipse', px: 'Pixels'}, function(label, key) { %>
+      <option value="<%= key %>" <%= d.map_orientation === key ? 'selected="selected"' : '' %>><%= label %></option>
+    <% }); %>
     </select>
   </fieldset>
   <fieldset class="form-group">

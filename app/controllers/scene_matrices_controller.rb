@@ -1,16 +1,16 @@
-class SceneMatriciesController < ApplicationController
-  include ScenesHelper
-  
+class SceneMatricesController < ApplicationController
   protect_from_forgery with: :null_session
-  before_action :find_parent_scene
-  before_action :find_matrix, exclude: [:index, :create]
+  before_action :find_matrix, except: [:index, :create]
 
   def index
-
+    #render json: @scene.scene_matrices
   end
 
   def create
-    render json: SceneMatrix.create(matrix_params)
+    @matrix = SceneMatrix.new(matrix_params)
+    if @matrix.save
+      render json: @matrix
+    end
   end
 
   def show
@@ -18,12 +18,15 @@ class SceneMatriciesController < ApplicationController
   end
 
   def update
-    render json: @matrix.update(matrix_params)
+    if @matrix.update(matrix_params)
+      render json: @matrix
+    end
   end
 
   def destroy
-    @matrix.destroy
-    render json: @matrix
+    if @matrix.destroy
+      render json: @matrix
+    end
   end
 
   private
@@ -33,7 +36,7 @@ class SceneMatriciesController < ApplicationController
   end
 
   def matrix_params
-    params.permit(
+    params.require(:scene_matrix).permit(
       :scene_id,
       :slug,
       :axis,

@@ -23,9 +23,10 @@ class ScenesController < ApplicationController
 
   def show
     render json: {
-      layers: [],
-      grids: [],
-      matricies: []
+      id: @scene.id,
+      layers: @scene.scene_layers,
+      grids: @scene.scene_grids,
+      matrices: @scene.scene_matrices
     }
   end
   

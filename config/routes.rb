@@ -30,6 +30,6 @@ Lassie::Application.routes.draw do
   resources :behaviors, except: [:new, :edit]
   resources :scene_layers, except: [:new, :edit]
   resources :scene_grids, except: [:new, :edit]
-  resources :scene_matricies, except: [:new, :edit]
+  resources :scene_matrices, except: [:new, :edit]
 
 end
