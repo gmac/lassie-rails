@@ -18,4 +18,10 @@ end
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry-rails'
+  gem 'rspec-rails', '~> 2.14.0'
+  gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'factory_girl_rails'
+  gem 'ffaker'
 end
